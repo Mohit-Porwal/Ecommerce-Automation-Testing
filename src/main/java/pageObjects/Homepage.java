@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class Homepage {
-    
+
     public WebDriver driver;
 
 	By toggle = By.cssSelector(".toggle");
@@ -120,3 +120,6 @@ public class Homepage {
 		return driver.findElement(cookie);
 	}
 }
+
+
+737910590
