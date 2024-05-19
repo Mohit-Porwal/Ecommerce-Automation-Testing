@@ -120,6 +120,3 @@ public class Homepage {
 		return driver.findElement(cookie);
 	}
 }
-
-
-737910590
