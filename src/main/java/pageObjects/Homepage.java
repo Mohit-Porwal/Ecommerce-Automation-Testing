@@ -109,6 +109,7 @@ public class Homepage {
 	}	
 	
 	public WebElement getTestStoreLink() {
+		System.out.println("helloteststore");
 		return driver.findElement(testStoreLink);
 	}	
 	

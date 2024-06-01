@@ -31,6 +31,5 @@ public class BasePage {
         url = prop.getProperty("url");
         return url;
     }
-
     
 }
