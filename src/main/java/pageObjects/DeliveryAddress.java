@@ -1,8 +1,12 @@
 package pageObjects;
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class DeliveryAddress {
 
@@ -38,6 +42,8 @@ public class DeliveryAddress {
 	}
 	
 	public WebElement getAddressField() {
+		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(addressField));
 		return driver.findElement(addressField);
 	}
 	

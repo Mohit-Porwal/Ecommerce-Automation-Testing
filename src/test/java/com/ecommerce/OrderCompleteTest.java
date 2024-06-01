@@ -7,8 +7,11 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import base.BasePage;
+import pageObjects.DeliveryAddress;
 import pageObjects.Homepage;
+import pageObjects.Payment;
 import pageObjects.PersonalInfo;
+import pageObjects.ShippingMethod;
 import pageObjects.ShopContentPanel;
 import pageObjects.ShopHomepage;
 import pageObjects.ShopProductpage;
@@ -66,11 +69,26 @@ public class OrderCompleteTest extends BasePage {
         info.getGenderMr().click();
         info.getFirstNameField().sendKeys("John");
 		info.getLastnameField().sendKeys("Smith");
-		info.getEmailField().sendKeys("johnsmith@test.com");
+		info.getEmailField().sendKeys("jsmith@hotmail.com");
 		info.getTermsConditionsCheckbox().click();
 		info.getContinueBtn().click();
 
-        
+        DeliveryAddress address = new DeliveryAddress(driver);
+        address.getAddressField().sendKeys("123 Main Street");
+        address.getCityField().sendKeys("Rochester");
+        Select state = new Select(address.getStateDropdown());
+		state.selectByVisibleText("Michigan");
+		address.getPostcodeField().sendKeys("77021");
+		address.getContinueBtn().click();
+
+        ShippingMethod shipMethod = new ShippingMethod(driver);
+		shipMethod.getDeliveryMsgTextbox().sendKeys("If I am not in, please leave my delivery on my porch.");
+		shipMethod.getContinueBtn().click();
+
+        Payment payment = new Payment(driver);
+		payment.getPayByCheckRadioBtn().click();
+		payment.getTermsConditionsCheckbox().click();
+		payment.getOrderBtn().click();
 	}
 
 }
