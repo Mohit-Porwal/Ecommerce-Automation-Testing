@@ -20,6 +20,8 @@ public class ShopContentPanel {
 	}
 	
 	public WebElement getContinueShopBtn() {
+		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(continueShoppingBtn));
 		return driver.findElement(continueShoppingBtn);
 	}
 	
