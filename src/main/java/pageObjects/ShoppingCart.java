@@ -1,5 +1,6 @@
 package pageObjects;
 
+import java.io.IOException;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
@@ -8,7 +9,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class ShoppingCart {
+import base.BasePage;
+
+public class ShoppingCart extends BasePage{
 
 	public WebDriver driver;
 	
@@ -20,11 +23,12 @@ public class ShoppingCart {
 	By deleteItemTwo = By.cssSelector(".cart-items .cart-item:nth-of-type(2) .float-xs-left");
 	By totalValue = By.cssSelector(".cart-total .value");
 	
-	public ShoppingCart(WebDriver driver) {
-		this.driver = driver;
+	public ShoppingCart() throws IOException {
+		super();
 	}
 	
-	public WebElement getHavePromo() {
+	public WebElement getHavePromo() throws IOException {
+		this.driver = getDriver();
 		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.visibilityOfElementLocated(havePromo));
 		return driver.findElement(havePromo);

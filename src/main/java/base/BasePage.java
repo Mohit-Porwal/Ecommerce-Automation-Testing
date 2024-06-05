@@ -5,10 +5,8 @@ import java.io.IOException;
 import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 public class BasePage {
-    public static WebDriver driver;
     private String url;
     private Properties prop;
 
@@ -18,13 +16,8 @@ public class BasePage {
         prop.load(data);
     }
     
-    public WebDriver getDriver(){
-       if(prop.getProperty("browser").equals("chrome")){
-        System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+"\\src\\main\\java\\base\\drivers\\chromedriver.exe");
-        driver = new ChromeDriver();
-       } 
-       driver.manage().window().maximize();
-       return driver;
+    public WebDriver getDriver() throws IOException{
+        return WebDriverInstance.getDriver();
     }
 
     public String getUrl(){
