@@ -1,9 +1,6 @@
 package com.ecommerce;
 
-import static org.junit.Assert.assertTrue;
-
-import org.junit.Test;
-
+import org.testng.annotations.Test;
 /**
  * Unit test for simple App.
  */
@@ -16,5 +13,10 @@ public class AppTest
     public void shouldAnswerWithTrue()
     {
         assertTrue( true );
+    }
+
+    private void assertTrue(boolean b) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'assertTrue'");
     }
 }
