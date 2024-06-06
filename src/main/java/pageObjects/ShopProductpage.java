@@ -1,10 +1,14 @@
 package pageObjects;
 
+import java.io.IOException;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class ShopProductpage {
+import base.BasePage;
+
+public class ShopProductpage extends BasePage{
 
 	public WebDriver driver;
 	
@@ -14,8 +18,9 @@ public class ShopProductpage {
 	By addToCartBtn = By.cssSelector(".add-to-cart.btn.btn-primary");
 	By homepageLink = By.xpath("//span[.='Home']");
 	
-	public ShopProductpage(WebDriver driver) {
-		this.driver = driver;
+	public ShopProductpage() throws IOException {
+		super();
+		this.driver = getDriver();
 	}
 	
 	public WebElement getSizeOption() {

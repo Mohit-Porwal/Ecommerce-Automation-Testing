@@ -1,10 +1,14 @@
 package pageObjects;
 
+import java.io.IOException;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class PersonalInfo {
+import base.BasePage;
+
+public class PersonalInfo extends BasePage{
 
 	public WebDriver driver;
 	
@@ -20,8 +24,9 @@ public class PersonalInfo {
 	By termsConditionsCheckbox = By.cssSelector("input[name='psgdpr']");
 	By continueBtn = By.cssSelector("form#customer-form  button[name='continue']");
 	
-	public PersonalInfo(WebDriver driver) {
-		this.driver = driver;
+	public PersonalInfo() throws IOException {
+		super();
+		this.driver = getDriver();
 	}
 	
 	public WebElement getGenderMr() {

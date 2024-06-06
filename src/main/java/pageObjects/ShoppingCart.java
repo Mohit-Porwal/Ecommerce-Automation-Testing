@@ -25,10 +25,10 @@ public class ShoppingCart extends BasePage{
 	
 	public ShoppingCart() throws IOException {
 		super();
+		this.driver = getDriver();
 	}
 	
 	public WebElement getHavePromo() throws IOException {
-		this.driver = getDriver();
 		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.visibilityOfElementLocated(havePromo));
 		return driver.findElement(havePromo);

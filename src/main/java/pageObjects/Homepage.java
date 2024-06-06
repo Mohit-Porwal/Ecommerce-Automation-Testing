@@ -6,7 +6,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class Homepage {
+import base.BasePage;
+
+public class Homepage extends BasePage{
 
     public WebDriver driver;
 
@@ -32,8 +34,9 @@ public class Homepage {
 	By aboutMeLink = By.linkText("ABOUT ME");
 	By cookie = By.cssSelector(".close-cookie-warning > span");
 	
-	public Homepage(WebDriver driver) {
-		this.driver = driver;
+	public Homepage() throws IOException {
+		super();
+		this.driver = getDriver();
 	}
 	
 	public WebElement getToggle() {

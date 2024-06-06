@@ -24,18 +24,6 @@ public class ModifyCartTest extends BasePage{
         super();
     }
 
-    @BeforeTest
-    public void setup(){
-        driver = getDriver();
-        driver.get(getUrl());
-    }
-
-    @AfterTest
-    public void tearDown(){
-        driver.close();
-        driver = null;
-    }
-
     @Test
     public void addRemoveItem() throws IOException{
         

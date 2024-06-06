@@ -1,10 +1,14 @@
 package pageObjects;
 
+import java.io.IOException;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class Payment {
+import base.BasePage;
+
+public class Payment extends BasePage{
 
 	public WebDriver driver;
 	
@@ -13,8 +17,9 @@ public class Payment {
 	By termsAndConditions = By.xpath("//input[@id='conditions_to_approve[terms-and-conditions]']");
 	By orderBtn = By.xpath("//div[@id='payment-confirmation']//button[@type='submit']");
 	
-	public Payment(WebDriver driver) {
-		this.driver = driver;
+	public Payment() throws IOException {
+		super();
+		this.driver = getDriver();
 	}
 	
 	public WebElement getPayByCheckRadioBtn() {

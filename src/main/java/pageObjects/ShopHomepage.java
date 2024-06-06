@@ -1,10 +1,14 @@
 package pageObjects;
 
+import java.io.IOException;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class ShopHomepage {
+import base.BasePage;
+
+public class ShopHomepage extends BasePage{
 	public WebDriver driver;
 	
 	By productOne = By.linkText("Hummingbird Printed T-Shirt");
@@ -16,8 +20,9 @@ public class ShopHomepage {
 	By productSeven = By.linkText("Mug The Adventure Begins");
 	By productEight = By.linkText("Mug Today Is A Good Day");
 	
-	public ShopHomepage(WebDriver driver) {
-		this.driver = driver;
+	public ShopHomepage() throws IOException {
+		super();
+		this.driver = getDriver();
 	}
 	
 	public WebElement getProdOne() {

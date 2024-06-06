@@ -1,17 +1,22 @@
 package pageObjects;
 
+import java.io.IOException;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class ShippingMethod {
+import base.BasePage;
+
+public class ShippingMethod extends BasePage{
 	public WebDriver driver;
 	
 	By deliveryMsgTextbox = By.cssSelector("textarea#delivery_message");
 	By continueBtn = By.cssSelector("[name='confirmDeliveryOption']");
 
-	public ShippingMethod(WebDriver driver) {
-		this.driver = driver;
+	public ShippingMethod() throws IOException {
+		super();
+		this.driver = getDriver();
 	}
 	
 	public WebElement getDeliveryMsgTextbox() {

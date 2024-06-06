@@ -1,5 +1,6 @@
 package pageObjects;
 
+import java.io.IOException;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
@@ -8,7 +9,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class DeliveryAddress {
+import base.BasePage;
+
+public class DeliveryAddress extends BasePage{
 
 	public WebDriver driver;
 	
@@ -25,11 +28,12 @@ public class DeliveryAddress {
 	By invoiceSameAddCheckboc = By.cssSelector("input#use_same_address");
 	By continueBtn = By.cssSelector("button[name='confirm-addresses']");
 	
-	public DeliveryAddress(WebDriver driver) {
-		this.driver = driver;
+	public DeliveryAddress() throws IOException {
+		super();
+		this.driver = getDriver();
 	}
 	
-	public WebElement getFirstNameField() {
+	public WebElement getFirstNameField() throws IOException {
 		return driver.findElement(firstNameField);
 	}
 	

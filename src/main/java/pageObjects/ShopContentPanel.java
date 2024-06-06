@@ -1,5 +1,6 @@
 package pageObjects;
 
+import java.io.IOException;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
@@ -8,15 +9,18 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class ShopContentPanel {
+import base.BasePage;
+
+public class ShopContentPanel extends BasePage{
 
 	public WebDriver driver;
 	
 	By continueShoppingBtn = By.xpath("//button[contains(text(), 'Continue')]");
 	By checkoutBtn = By.linkText("PROCEED TO CHECKOUT");
 	
-	public ShopContentPanel(WebDriver driver) {
-		this.driver = driver;
+	public ShopContentPanel() throws IOException {
+		super();
+		this.driver = getDriver();
 	}
 	
 	public WebElement getContinueShopBtn() {
