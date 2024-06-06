@@ -3,14 +3,11 @@ package com.ecommerce;
 import java.io.IOException;
 import java.time.Duration;
 
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import base.BasePage;
+import base.Hooks;
+
 import org.testng.Assert;
 import pageObjects.Homepage;
 import pageObjects.ShopContentPanel;
@@ -18,7 +15,7 @@ import pageObjects.ShopHomepage;
 import pageObjects.ShopProductpage;
 import pageObjects.ShoppingCart;
 
-public class ModifyCartTest extends BasePage{
+public class ModifyCartTest extends Hooks{
 
     public ModifyCartTest() throws IOException {
         super();
@@ -27,23 +24,23 @@ public class ModifyCartTest extends BasePage{
     @Test
     public void addRemoveItem() throws IOException{
         
-        Homepage home = new Homepage(driver);
+        Homepage home = new Homepage();
 
 		//handles cookie prompt
 		home.getCookie().click();
 
 		home.getTestStoreLink().click();
 		
-		ShopHomepage shopHome = new ShopHomepage(driver);
+		ShopHomepage shopHome = new ShopHomepage();
 		shopHome.getProdOne().click();
 		
-		ShopProductpage shopProd = new ShopProductpage(driver);
+		ShopProductpage shopProd = new ShopProductpage();
 		Select option = new Select(shopProd.getSizeOption());
 		option.selectByVisibleText("M");
 		shopProd.getQuantIncrease().click();
 		shopProd.getAddToCartBtn().click();
 
-        ShopContentPanel panel = new ShopContentPanel(driver);
+        ShopContentPanel panel = new ShopContentPanel();
         panel.getContinueShopBtn().click();
         shopProd.getHomepageLink().click();
 
@@ -52,11 +49,11 @@ public class ModifyCartTest extends BasePage{
 
         panel.getCheckoutBtn().click();
 
-        ShoppingCart cart = new ShoppingCart(driver);
+        ShoppingCart cart = new ShoppingCart();
         cart.getDeleteItemTwo().click();
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
-        wait.until(ExpectedConditions.invisibilityOf(cart.getDeleteItemTwo()));
+        //using wait to ensure the deletion of item two has taken place
+        waitForElementInvisible(cart.getDeleteItemTwo(), Duration.ofSeconds(10));
 
         Assert.assertEquals(cart.getTotalAmount().getText(),"$45.24");
     }

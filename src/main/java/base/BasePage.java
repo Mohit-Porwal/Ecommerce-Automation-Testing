@@ -2,9 +2,13 @@ package base;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BasePage {
     private String url;
@@ -16,7 +20,7 @@ public class BasePage {
         prop.load(data);
     }
     
-    public WebDriver getDriver() throws IOException{
+    public static WebDriver getDriver() throws IOException{
         return WebDriverInstance.getDriver();
     }
 
@@ -25,4 +29,8 @@ public class BasePage {
         return url;
     }
     
+    public static void waitForElementInvisible(WebElement element, Duration timer) throws IOException {
+		WebDriverWait wait = new WebDriverWait(getDriver(), timer);
+		wait.until(ExpectedConditions.invisibilityOf(element));
+	}
 }
